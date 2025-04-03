@@ -2,7 +2,8 @@
 
 A modern creator platform built with Next.js, TypeScript, and Tailwind CSS.
 
-![Dashboard Preview](https://placekitten.com/1200/600)
+<img width="3008" alt="Xnapper-2025-04-03-08 38 41" src="https://github.com/user-attachments/assets/807eb06a-1e9c-4ab3-be89-03b5fae19b8f" />
+
 
 ## 🚀 Features
 
