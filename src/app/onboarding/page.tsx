@@ -98,7 +98,7 @@ export default function OnboardingPage() {
     if (initialPlatform && !connectedPlatforms.includes(initialPlatform)) {
       setConnectedPlatforms([initialPlatform])
     }
-  }, [initialPlatform])
+  }, [initialPlatform, connectedPlatforms])
 
   const handlePlatformClick = (platformId: string) => {
     if (connectedPlatforms.includes(platformId)) return

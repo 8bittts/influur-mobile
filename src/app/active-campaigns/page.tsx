@@ -589,36 +589,28 @@ export default function ActiveCampaignsPage() {
 
   useEffect(() => {
     const verifyPosts = async (campaignId: string, platform: string) => {
-      const posts = recentPosts[platform]
-      if (!posts) return
+      const campaign = campaigns.find(c => c.id === campaignId);
+      if (!campaign) return;
 
-      // Set loading state
-      setVerifiedPosts(prev => ({
-        ...prev,
-        [campaignId]: [] // Clear previous posts while loading
-      }))
-
-      // Verify all posts
+      const posts = recentPosts[platform];
       const verified = await Promise.all(
         posts.map(async (post) => ({
           ...post,
           isVerified: await verifyEmbed(platform, post.videoUrl)
         }))
-      )
+      );
 
-      // Update state with verified posts
       setVerifiedPosts(prev => ({
         ...prev,
-        [campaignId]: verified.filter(post => post.isVerified)
-      }))
-    }
+        [campaignId]: verified
+      }));
+    };
 
+    // Verify posts for all campaigns
     campaigns.forEach(campaign => {
-      if (campaign.isExpanded && (!verifiedPosts[campaign.id] || verifiedPosts[campaign.id].length === 0)) {
-        verifyPosts(campaign.id, campaign.platform)
-      }
-    })
-  }, [campaigns])
+      verifyPosts(campaign.id, campaign.platform);
+    });
+  }, [campaigns]);
 
   return (
     <div className="min-h-screen bg-[#FFFBF7]">
