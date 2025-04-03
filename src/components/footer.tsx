@@ -18,12 +18,12 @@ import { cn } from "@/lib/utils"
 
 // Constants
 const FOOTER_STYLES = {
-  container: "w-full border-t bg-white",
-  content: "container mx-auto max-w-md px-4 py-6",
-  logo: "text-xl font-semibold text-[#FF5F1F]",
-  links: "flex gap-4 text-sm text-gray-500",
-  link: "hover:text-[#FF5F1F] transition-colors",
-  copyright: "text-xs text-gray-400"
+  container: "w-full border-t bg-white mt-auto",
+  content: "container mx-auto max-w-md px-4 py-4 sm:py-6",
+  logo: "text-lg sm:text-xl font-semibold text-[#FF5F1F]",
+  links: "flex flex-wrap justify-center gap-3 sm:gap-4 text-xs sm:text-sm text-gray-500",
+  link: "hover:text-[#FF5F1F] transition-colors px-2 py-1",
+  copyright: "text-[10px] sm:text-xs text-gray-400"
 } as const
 
 const FOOTER_LINKS = [
@@ -41,7 +41,7 @@ export default function Footer() {
   return (
     <footer className={FOOTER_STYLES.container}>
       <div className={FOOTER_STYLES.content}>
-        <div className="flex flex-col items-center space-y-4">
+        <div className="flex flex-col items-center space-y-3 sm:space-y-4">
           {/* Logo */}
           <div className={FOOTER_STYLES.logo}>
             influur

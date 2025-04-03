@@ -137,20 +137,25 @@ export default function SignupPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FFFBF7]">
-      <main className="flex-1 flex flex-col px-4 pt-12 pb-6">
-        {/* Get Started Section */}
-        <div className="text-center mb-16">
-          <motion.h2 
-            className="text-3xl font-semibold text-[#FF5F1F] animate-glow"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            Get Started Fast 🚀
-          </motion.h2>
+      <main className="flex-1 flex flex-col px-4 sm:px-6 pt-8 sm:pt-12 pb-6">
+        {/* Logo Section */}
+        <div className="text-center mb-8 sm:mb-12">
+          <Image
+            src="/influur-logo.svg"
+            alt="Influur"
+            width={120}
+            height={40}
+            className="mx-auto mb-6"
+          />
+          <h1 className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-2">
+            Start earning money by connecting with top brands
+          </h1>
+          <p className="text-base sm:text-lg text-gray-600">
+            Join thousands of creators already using Influur
+          </p>
         </div>
 
-        <div className="w-full max-w-md mx-auto space-y-6">
+        <div className="w-full max-w-md mx-auto space-y-6 px-4 sm:px-0">
           {/* Platform buttons */}
           <div className="space-y-3">
             {SOCIAL_PLATFORMS.map((platform) => (
@@ -159,19 +164,19 @@ export default function SignupPage() {
                 onClick={() => handlePlatformClick(platform.id)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`flex items-center justify-center w-full px-6 py-4 bg-white border-2 rounded-xl hover:bg-gray-50 ${platform.color} hover:border-current shadow-sm`}
+                className={`flex items-center justify-center w-full px-4 sm:px-6 py-3 sm:py-4 bg-white border-2 rounded-xl hover:bg-gray-50 ${platform.color} hover:border-current shadow-sm transition-all`}
               >
                 {platform.icon}
-                <span className="ml-3 text-base font-medium">Continue with {platform.name}</span>
+                <span className="ml-3 text-sm sm:text-base font-medium">Continue with {platform.name}</span>
               </motion.button>
             ))}
           </div>
 
           {/* Influur AI Info */}
-          <div className="text-center">
+          <div className="text-center mt-8">
             <button
               onClick={() => setShowInfoModal(true)}
-              className="text-sm text-gray-500 hover:text-[#FF5F1F]"
+              className="text-sm sm:text-base text-gray-500 hover:text-[#FF5F1F] transition-colors"
             >
               What is <span className="font-medium text-[#FF5F1F]">Influur AI</span>?
             </button>
@@ -180,13 +185,13 @@ export default function SignupPage() {
       </main>
 
       {/* Footer */}
-      <footer className="py-4 text-center">
-        <div className="space-y-2">
-          <div className="flex justify-center gap-4 text-sm text-gray-500">
-            <Link href="/terms" className="hover:text-gray-600">Terms of Service</Link>
-            <Link href="/privacy" className="hover:text-gray-600">Privacy Policy</Link>
+      <footer className="py-4 text-center mt-auto">
+        <div className="space-y-2 px-4">
+          <div className="flex justify-center gap-4 text-xs sm:text-sm text-gray-500">
+            <Link href="/terms" className="hover:text-gray-600 transition-colors">Terms of Service</Link>
+            <Link href="/privacy" className="hover:text-gray-600 transition-colors">Privacy Policy</Link>
           </div>
-          <div className="text-sm text-gray-400">
+          <div className="text-xs sm:text-sm text-gray-400">
             © 2025 Influur. All rights reserved.
           </div>
         </div>
@@ -194,77 +199,73 @@ export default function SignupPage() {
 
       {/* Avatar Upload Modal */}
       <Dialog open={showAvatarModal} onOpenChange={setShowAvatarModal}>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="sm:max-w-md mx-4 sm:mx-auto">
           <div className="relative">
-            <div className="p-6">
+            <button
+              onClick={() => setShowAvatarModal(false)}
+              className="absolute right-2 top-2 rounded-full p-2 hover:bg-gray-100"
+            >
+              <X className="w-4 h-4" />
+            </button>
+            <div className="p-4 sm:p-6">
               <div className="text-center mb-6">
-                <h2 className="text-xl font-semibold text-gray-900">Upload Your Profile Picture</h2>
-                <p className="text-sm text-gray-600 mt-1">Choose a photo that represents you best</p>
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">
+                  Complete Your Profile
+                </h3>
+                <p className="text-sm sm:text-base text-gray-500">
+                  Add a profile picture and your name to get started
+                </p>
               </div>
 
               <div className="space-y-6">
-                <div 
-                  onClick={() => fileInputRef.current?.click()}
-                  className="relative w-32 h-32 mx-auto cursor-pointer group"
-                >
-                  <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg">
+                {/* Avatar Upload */}
+                <div className="text-center">
+                  <div 
+                    onClick={() => fileInputRef.current?.click()}
+                    className="relative mx-auto w-24 h-24 rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center cursor-pointer hover:border-[#FF5F1F] transition-colors"
+                  >
                     {avatarUrl ? (
                       <Image
                         src={avatarUrl}
                         alt="Profile"
-                        width={128}
-                        height={128}
-                        className="object-cover w-full h-full"
-                        unoptimized
+                        width={96}
+                        height={96}
+                        className="w-full h-full rounded-full object-cover"
                       />
                     ) : (
-                      <div className="w-full h-full bg-gray-100 flex items-center justify-center">
-                        <User className="w-12 h-12 text-gray-400" />
-                      </div>
+                      <Upload className="w-6 h-6 text-gray-400" />
                     )}
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                      <Upload className="w-6 h-6 text-white" />
-                    </div>
                   </div>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleAvatarUpload}
+                    className="hidden"
+                  />
+                  <p className="mt-2 text-xs sm:text-sm text-gray-500">
+                    Click to upload your profile picture
+                  </p>
                 </div>
 
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept={ALLOWED_FILE_TYPES.join(',')}
-                  onChange={handleAvatarUpload}
-                  className="hidden"
-                />
-
-                <div className="space-y-2">
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                    Your Name
-                  </label>
+                {/* Name Input */}
+                <div>
                   <Input
-                    id="name"
                     type="text"
-                    value={name}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                      setName(e.target.value)
-                    }}
                     placeholder="Enter your name"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#FF5F1F] focus:border-[#FF5F1F]"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="w-full text-sm sm:text-base"
                   />
                 </div>
 
+                {/* Continue Button */}
                 <button
                   onClick={handleContinue}
-                  disabled={isLoading || !name.trim()}
-                  className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-white bg-[#FF5F1F] hover:bg-[#FF5F1F]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF5F1F] disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={isLoading}
+                  className="w-full py-2 sm:py-3 px-4 bg-[#FF5F1F] text-white rounded-lg font-medium hover:bg-[#FF4F00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
-                  {isLoading ? (
-                    <div className="flex items-center justify-center">
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
-                      Setting up your profile...
-                    </div>
-                  ) : (
-                    "Continue to Onboarding"
-                  )}
+                  {isLoading ? "Setting up..." : "Continue"}
                 </button>
               </div>
             </div>
@@ -272,104 +273,68 @@ export default function SignupPage() {
         </DialogContent>
       </Dialog>
 
-      {/* Influur AI Info Modal */}
+      {/* Info Modal */}
       <Dialog open={showInfoModal} onOpenChange={setShowInfoModal}>
-        <DialogContent className="sm:max-w-xl p-0">
+        <DialogContent className="sm:max-w-lg mx-4 sm:mx-auto">
           <div className="relative">
-            <div className="p-6">
-              <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">Meet Influur AI</h2>
-                <p className="text-gray-600">Your AI-powered path to profitable brand partnerships</p>
-              </div>
-
-              <div className="space-y-8">
-                {/* Revenue Potential */}
-                <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-4">
-                  <div className="flex items-start gap-3 mb-4">
-                    <div className="p-2 bg-orange-100 rounded-lg">
-                      <TrendingUp className="w-5 h-5 text-[#FF5F1F]" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900">Smart Revenue Optimization</h3>
-                      <p className="text-sm text-gray-600">Our AI analyzes your content and audience to maximize your earning potential</p>
-                    </div>
+            <button
+              onClick={() => setShowInfoModal(false)}
+              className="absolute right-2 top-2 rounded-full p-2 hover:bg-gray-100"
+            >
+              <X className="w-4 h-4" />
+            </button>
+            <div className="p-4 sm:p-6">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">
+                Welcome to Influur AI
+              </h3>
+              
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0">
+                    <TrendingUp className="w-5 h-5 text-[#FF5F1F]" />
                   </div>
-                  <div className="h-[160px] mt-4">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <LineChart data={REVENUE_DATA}>
-                        <XAxis 
-                          dataKey="month" 
-                          axisLine={false}
-                          tickLine={false}
-                          tick={{ fill: '#6b7280', fontSize: 12 }}
-                        />
-                        <YAxis 
-                          axisLine={false}
-                          tickLine={false}
-                          tick={{ fill: '#6b7280', fontSize: 12 }}
-                          tickFormatter={(value) => `$${value}`}
-                        />
-                        <Tooltip />
-                        <Line 
-                          type="monotone" 
-                          dataKey="value" 
-                          stroke="#FF5F1F" 
-                          strokeWidth={2}
-                          dot={{ fill: '#FF5F1F', strokeWidth: 2, r: 4 }}
-                        />
-                      </LineChart>
-                    </ResponsiveContainer>
+                  <div>
+                    <h4 className="text-sm sm:text-base font-medium text-gray-900">Smart Growth</h4>
+                    <p className="text-xs sm:text-sm text-gray-500">AI-powered insights to grow your audience</p>
                   </div>
                 </div>
 
-                {/* Key Features Grid */}
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-blue-50 rounded-xl p-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Users className="w-5 h-5 text-blue-600" />
-                      <h3 className="font-medium text-gray-900">Smart Matching</h3>
-                    </div>
-                    <p className="text-sm text-gray-600">AI-powered brand matching based on your unique creator profile</p>
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0">
+                    <Users className="w-5 h-5 text-[#FF5F1F]" />
                   </div>
-
-                  <div className="bg-purple-50 rounded-xl p-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Globe className="w-5 h-5 text-purple-600" />
-                      <h3 className="font-medium text-gray-900">Global Reach</h3>
-                    </div>
-                    <p className="text-sm text-gray-600">Connect with brands worldwide that align with your values</p>
-                  </div>
-
-                  <div className="bg-green-50 rounded-xl p-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <ChartIcon className="w-5 h-5 text-green-600" />
-                      <h3 className="font-medium text-gray-900">Growth Insights</h3>
-                    </div>
-                    <p className="text-sm text-gray-600">Detailed analytics and performance tracking</p>
-                  </div>
-
-                  <div className="bg-amber-50 rounded-xl p-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Sparkles className="w-5 h-5 text-amber-600" />
-                      <h3 className="font-medium text-gray-900">Easy Payments</h3>
-                    </div>
-                    <p className="text-sm text-gray-600">Secure, automated payments for all partnerships</p>
+                  <div>
+                    <h4 className="text-sm sm:text-base font-medium text-gray-900">Brand Matching</h4>
+                    <p className="text-xs sm:text-sm text-gray-500">Connect with brands that match your style</p>
                   </div>
                 </div>
 
-                {/* Success Stats */}
-                <div className="grid grid-cols-3 gap-4 text-center">
-                  <div>
-                    <div className="text-2xl font-bold text-[#FF5F1F]">93%</div>
-                    <div className="text-sm text-gray-600">Match Rate</div>
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0">
+                    <Globe className="w-5 h-5 text-[#FF5F1F]" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-[#FF5F1F]">2.5x</div>
-                    <div className="text-sm text-gray-600">Revenue Growth</div>
+                    <h4 className="text-sm sm:text-base font-medium text-gray-900">Global Reach</h4>
+                    <p className="text-xs sm:text-sm text-gray-500">Access opportunities worldwide</p>
                   </div>
-                  <div>
-                    <div className="text-2xl font-bold text-[#FF5F1F]">24h</div>
-                    <div className="text-sm text-gray-600">Avg. Response</div>
+                </div>
+
+                <div className="mt-6">
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <h4 className="text-sm sm:text-base font-medium text-gray-900 mb-2 flex items-center">
+                      <Sparkles className="w-4 h-4 text-[#FF5F1F] mr-2" />
+                      Average Creator Earnings
+                    </h4>
+                    <div className="h-[200px]">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <LineChart data={REVENUE_DATA}>
+                          <XAxis dataKey="month" />
+                          <YAxis />
+                          <Tooltip />
+                          <Line type="monotone" dataKey="value" stroke="#FF5F1F" strokeWidth={2} />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </div>
                   </div>
                 </div>
               </div>

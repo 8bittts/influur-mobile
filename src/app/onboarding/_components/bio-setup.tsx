@@ -12,11 +12,11 @@ export function BioSetup() {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="space-y-8"
+      className="w-full max-w-md mx-auto px-4 sm:px-0 space-y-6 sm:space-y-8"
     >
       <div className="text-center">
-        <h1 className="text-2xl font-bold text-gray-900">Tell us about yourself</h1>
-        <p className="mt-2 text-gray-600">
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Tell us about yourself</h1>
+        <p className="mt-2 text-sm sm:text-base text-gray-600">
           Write a short bio that describes who you are
         </p>
       </div>
@@ -31,17 +31,17 @@ export function BioSetup() {
             }
           }}
           placeholder="I'm a content creator passionate about..."
-          className="w-full min-h-[120px] p-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-1 focus:ring-primary"
+          className="w-full min-h-[120px] p-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-1 focus:ring-primary text-sm sm:text-base resize-none"
         />
         <div className="flex justify-end">
-          <span className={`text-sm ${bio.length >= MAX_BIO_LENGTH ? "text-red-500" : "text-gray-500"}`}>
+          <span className={`text-xs sm:text-sm ${bio.length >= MAX_BIO_LENGTH ? "text-red-500" : "text-gray-500"}`}>
             {bio.length}/{MAX_BIO_LENGTH}
           </span>
         </div>
       </div>
 
       <button
-        className="btn-primary w-full"
+        className="w-full py-3 px-4 bg-[#FF5F1F] text-white rounded-lg font-medium text-sm sm:text-base hover:bg-[#FF4F00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         onClick={() => {
           if (bio) {
             setStep(2);

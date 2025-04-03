@@ -19,8 +19,9 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  maximumScale: 5,
+  minimumScale: 1,
+  userScalable: true,
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
@@ -33,12 +34,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="antialiased text-base">
-      <body className={inter.className}>
+    <html lang="en" className="antialiased">
+      <body className={`${inter.className} text-sm sm:text-base`}>
         <Providers>
           <UserProvider>
             <div className="min-h-screen bg-background font-sans antialiased flex flex-col">
-              <main className="flex-1 container mx-auto">
+              <main className="flex-1 container mx-auto px-4 sm:px-6 lg:px-8">
                 {children}
               </main>
               <Footer />
