@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const MAX_BIO_LENGTH = 160;
 
 export function BioSetup() {
-  const { state, dispatch } = useOnboarding();
+  const { bio, setBio, setStep } = useOnboarding();
 
   return (
     <motion.div
@@ -23,19 +23,19 @@ export function BioSetup() {
 
       <div className="space-y-2">
         <textarea
-          value={state.bio}
+          value={bio}
           onChange={(e) => {
             const text = e.target.value;
             if (text.length <= MAX_BIO_LENGTH) {
-              dispatch({ type: "SET_BIO", payload: text });
+              setBio(text);
             }
           }}
           placeholder="I'm a content creator passionate about..."
           className="w-full min-h-[120px] p-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-1 focus:ring-primary"
         />
         <div className="flex justify-end">
-          <span className={`text-sm ${state.bio.length >= MAX_BIO_LENGTH ? "text-red-500" : "text-gray-500"}`}>
-            {state.bio.length}/{MAX_BIO_LENGTH}
+          <span className={`text-sm ${bio.length >= MAX_BIO_LENGTH ? "text-red-500" : "text-gray-500"}`}>
+            {bio.length}/{MAX_BIO_LENGTH}
           </span>
         </div>
       </div>
@@ -43,11 +43,11 @@ export function BioSetup() {
       <button
         className="btn-primary w-full"
         onClick={() => {
-          if (state.bio) {
-            dispatch({ type: "NEXT_STEP" });
+          if (bio) {
+            setStep(2);
           }
         }}
-        disabled={!state.bio}
+        disabled={!bio}
       >
         Continue
       </button>
