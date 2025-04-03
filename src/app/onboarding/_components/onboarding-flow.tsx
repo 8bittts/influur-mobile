@@ -1,6 +1,6 @@
 "use client";
 
-import { useOnboarding } from "@/lib/context/onboarding-context";
+import { useOnboarding } from "@/lib/contexts/onboarding/onboarding-context";
 import { ProfileSetup } from "./profile-setup";
 import { BioSetup } from "./bio-setup";
 import { InterestsSetup } from "./interests-setup";

@@ -1,4 +1,4 @@
-import { OnboardingProvider } from "@/lib/context/onboarding-context"
+import { OnboardingProvider } from "@/lib/contexts/onboarding/onboarding-context"
 
 export default function OnboardingLayout({
   children,

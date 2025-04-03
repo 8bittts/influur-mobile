@@ -1,6 +1,6 @@
 "use client";
 
-import { useOnboarding } from "@/lib/context/onboarding-context";
+import { useOnboarding } from "@/lib/contexts/onboarding/onboarding-context";
 import { motion } from "framer-motion";
 
 const AVAILABLE_INTERESTS = [

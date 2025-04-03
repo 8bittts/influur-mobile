@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { useOnboarding } from "@/lib/context/onboarding-context";
+import { useOnboarding } from "@/lib/contexts/onboarding/onboarding-context";
 import Image from "next/image";
 
 export function Completion() {
