@@ -1,6 +1,6 @@
 # Influur Mobile
 
-A modern creator platform built with Next.js, TypeScript, and Tailwind CSS.
+A modern creator platform built with Next.js, TypeScript, and Tailwind CSS, focused on music industry partnerships and creator monetization.
 
 <img width="3008" alt="Xnapper-2025-04-03-08 38 41" src="https://github.com/user-attachments/assets/807eb06a-1e9c-4ab3-be89-03b5fae19b8f" />
 
@@ -8,23 +8,30 @@ A modern creator platform built with Next.js, TypeScript, and Tailwind CSS.
 ## 🚀 Features
 
 - **Creator Dashboard**: Track your content performance and earnings
-- **Campaign Management**: Discover and manage brand partnerships
-- **Profile Management**: Showcase your work and connect with brands
+- **Campaign Management**: Discover and manage music industry partnerships
+- **Profile Management**: Showcase your work and connect with music brands
 - **Payment Integration**: Secure and easy payment processing
 - **Onboarding Flow**: Streamlined creator onboarding experience
 - **Real-time Analytics**: Track your growth and engagement
 - **Social Integration**: Connect your social media platforms
+- **Music Industry Focus**: Specialized in music brand partnerships
+- **Festival Coverage**: Tools for music festival content creation
+- **Artist Discovery**: Features for emerging artist promotion
 
 ## 🛠 Tech Stack
 
 - **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS + Shadcn UI
-- **Animation**: Framer Motion
-- **State Management**: React Context
+- **Language**: TypeScript 5.0
+- **Styling**: Tailwind CSS 3.3 + Shadcn UI
+- **Animation**: Framer Motion 10.16
+- **State Management**: React Context + nuqs
 - **Authentication**: NextAuth.js
 - **Database**: Prisma + PostgreSQL
 - **Deployment**: Vercel
+- **Analytics**: Recharts
+- **UI Components**: Shadcn UI
+- **Form Handling**: React Hook Form
+- **API Integration**: tRPC
 
 ## 📦 Getting Started
 
@@ -102,17 +109,19 @@ graph TD
    - Real-time analytics
    - Campaign management
    - Payment processing
+   - Music industry metrics
 
 3. **Onboarding System**
    - Multi-step form
    - Profile setup
    - Social media integration
+   - Music genre selection
 
 4. **Campaign Management**
-   - Discovery
-   - Application
-   - Tracking
-   - Payment
+   - Music brand discovery
+   - Festival coverage
+   - Artist promotion
+   - Payment tracking
 
 ## 📁 Project Structure
 
@@ -128,10 +137,18 @@ graph TD
     /profile       # Profile management
     /payments      # Payment settings
     /settings      # App settings
+    /strategy-builder # AI-powered campaign strategy
   /components
     /ui              # Reusable UI components
+      /Button
+      /Modal
+      /Card
     /forms           # Form-related components
+      /TextField
+      /Select
     /layout          # Layout components
+      /Navbar
+      /Footer
     /features        # Feature-specific components
   /lib              # Utility functions and shared logic
   /types            # TypeScript type definitions
@@ -200,20 +217,20 @@ yarn test
 ## 📊 Project Statistics
 
 ### Codebase Overview
-- **Total Files**: 66 TypeScript/TypeScript React files
-- **Total Lines of Code**: ~5,500-6,500 (including documentation)
-- **Pure Code Lines**: ~3,800-4,500 (excluding documentation)
+- **Total Files**: 72 TypeScript/TypeScript React files
+- **Total Lines of Code**: ~6,000-7,000 (including documentation)
+- **Pure Code Lines**: ~4,200-5,000 (excluding documentation)
 
 ### File Distribution
-- **UI Components**: 25 files (37.9%)
-- **Pages**: 15 files (22.7%)
-- **Context/Utils**: 12 files (18.2%)
-- **API Routes**: 8 files (12.1%)
-- **Types/Interfaces**: 4 files (6.1%)
-- **Config Files**: 2 files (3.0%)
+- **UI Components**: 28 files (38.9%)
+- **Pages**: 16 files (22.2%)
+- **Context/Utils**: 14 files (19.4%)
+- **API Routes**: 8 files (11.1%)
+- **Types/Interfaces**: 4 files (5.6%)
+- **Config Files**: 2 files (2.8%)
 
 ### Documentation Breakdown
-- **JSDoc Comments**: ~1,700 lines
+- **JSDoc Comments**: ~1,800 lines
 - **README Sections**: 12 major sections
 - **Code Examples**: 8 documented examples
 - **Flow Diagrams**: 3 Mermaid diagrams
@@ -225,9 +242,9 @@ yarn test
 - **Interface Documentation**: 100%
 
 ### Key Directories
-- **/src/components**: 37 files
-- **/src/app**: 15 files
-- **/src/lib**: 8 files
+- **/src/components**: 42 files
+- **/src/app**: 16 files
+- **/src/lib**: 10 files
 - **/src/types**: 4 files
 - **/src/styles**: 2 files
 
@@ -242,4 +259,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Next.js](https://nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Shadcn UI](https://ui.shadcn.com/)
-- [Framer Motion](https://www.framer.com/motion/) 
+- [Framer Motion](https://www.framer.com/motion/)
+- [Recharts](https://recharts.org/)
+- [tRPC](https://trpc.io/) 

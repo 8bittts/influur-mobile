@@ -7,6 +7,9 @@ import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { Line, LineChart, ResponsiveContainer, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts"
 import Link from "next/link"
 
+/**
+ * Campaign interface representing a brand partnership opportunity
+ */
 interface Campaign {
   id: string
   brand: string
@@ -29,139 +32,151 @@ interface Campaign {
   }
 }
 
+/**
+ * Mock campaign data for demonstration purposes
+ * @type {Campaign[]}
+ */
 const MOCK_CAMPAIGNS: Campaign[] = [
   {
     id: "1",
-    brand: "Nike",
-    title: "Summer Collection Launch",
-    payout: 1500,
+    brand: "Sony Music",
+    title: "New Artist Spotlight Series",
+    payout: 2500,
     deadline: "3 days left",
-    participants: 12,
-    description: "Create authentic content showcasing Nike's new summer collection in your unique style. Focus on lifestyle integration and athletic performance.",
+    participants: 8,
+    description: "Create authentic content showcasing emerging artists from Sony Music's roster. Focus on behind-the-scenes moments, studio sessions, and live performances.",
     requirements: [
-      "Minimum 10k followers",
-      "Sports or lifestyle focus",
+      "Minimum 15k followers",
+      "Music industry experience",
       "High engagement rate",
-      "Previous brand collaborations"
+      "Previous artist collaborations"
     ],
     platform: "Instagram & TikTok",
     duration: "2 weeks",
     stats: {
-      totalRevenue: 18500,
-      totalCreators: 12,
+      totalRevenue: 20000,
+      totalCreators: 8,
       growthData: [
-        { date: "Week 1", creators: 3, revenue: 4500 },
-        { date: "Week 2", creators: 8, revenue: 9000 },
-        { date: "Week 3", creators: 12, revenue: 18500 }
+        { date: "Week 1", creators: 3, revenue: 7500 },
+        { date: "Week 2", creators: 6, revenue: 15000 },
+        { date: "Week 3", creators: 8, revenue: 20000 }
       ]
     }
   },
   {
     id: "2",
-    brand: "Apple",
-    title: "Tech Review Series",
-    payout: 2000,
+    brand: "Warner Music",
+    title: "Album Release Campaign",
+    payout: 3000,
     deadline: "5 days left",
-    participants: 8,
-    description: "Share your honest experience with Apple's latest products. Focus on unique features and real-world usage scenarios.",
+    participants: 6,
+    description: "Promote Warner Music's upcoming album releases through creative content. Focus on track previews, artist interviews, and exclusive behind-the-scenes content.",
     requirements: [
-      "Tech-focused content",
+      "Music-focused content",
       "High production quality",
-      "Minimum 20k followers",
-      "Previous tech reviews"
+      "Minimum 25k followers",
+      "Previous music promotions"
     ],
     platform: "YouTube & Instagram",
     duration: "3 weeks",
     stats: {
-      totalRevenue: 24000,
-      totalCreators: 8,
+      totalRevenue: 18000,
+      totalCreators: 6,
       growthData: [
         { date: "Week 1", creators: 2, revenue: 6000 },
-        { date: "Week 2", creators: 6, revenue: 15000 },
-        { date: "Week 3", creators: 8, revenue: 24000 }
+        { date: "Week 2", creators: 4, revenue: 12000 },
+        { date: "Week 3", creators: 6, revenue: 18000 }
       ]
     }
   },
   {
     id: "3",
-    brand: "Starbucks",
-    title: "Morning Routine",
-    payout: 800,
+    brand: "Universal Music",
+    title: "Festival Coverage",
+    payout: 2000,
     deadline: "2 days left",
-    participants: 15,
-    description: "Create content featuring Starbucks as part of your morning routine. Highlight new seasonal beverages and food items.",
+    participants: 10,
+    description: "Cover Universal Music artists at major festivals. Create engaging content featuring live performances, artist meetups, and festival highlights.",
     requirements: [
-      "Lifestyle content creator",
-      "Food & beverage experience",
-      "5k+ followers",
+      "Festival experience",
+      "Live music coverage",
+      "10k+ followers",
       "US-based"
     ],
-    platform: "Instagram",
+    platform: "Instagram & TikTok",
     duration: "1 week",
     stats: {
-      totalRevenue: 10000,
-      totalCreators: 15,
+      totalRevenue: 20000,
+      totalCreators: 10,
       growthData: [
-        { date: "Week 1", creators: 5, revenue: 2000 },
-        { date: "Week 2", creators: 12, revenue: 7000 },
-        { date: "Week 3", creators: 15, revenue: 10000 }
+        { date: "Week 1", creators: 4, revenue: 8000 },
+        { date: "Week 2", creators: 7, revenue: 14000 },
+        { date: "Week 3", creators: 10, revenue: 20000 }
       ]
     }
   },
   {
     id: "4",
-    brand: "Adidas",
-    title: "Fitness Challenge",
-    payout: 1200,
+    brand: "Spotify",
+    title: "Playlist Curation",
+    payout: 1800,
     deadline: "4 days left",
-    participants: 10,
-    description: "Lead a fitness challenge using Adidas workout gear. Create motivational content and engage with your community.",
+    participants: 12,
+    description: "Create and promote themed playlists on Spotify. Focus on genre exploration, mood-based curation, and artist discovery.",
     requirements: [
-      "Fitness influencer",
-      "Certified trainer preferred",
-      "15k+ followers",
-      "High engagement"
+      "Music curation experience",
+      "Genre expertise",
+      "20k+ followers",
+      "Active Spotify presence"
     ],
-    platform: "Instagram & TikTok",
+    platform: "Instagram & Spotify",
     duration: "4 weeks",
     stats: {
-      totalRevenue: 16000,
-      totalCreators: 10,
+      totalRevenue: 21600,
+      totalCreators: 12,
       growthData: [
-        { date: "Week 1", creators: 3, revenue: 4000 },
-        { date: "Week 2", creators: 8, revenue: 12000 },
-        { date: "Week 3", creators: 10, revenue: 16000 }
+        { date: "Week 1", creators: 4, revenue: 4800 },
+        { date: "Week 2", creators: 8, revenue: 9600 },
+        { date: "Week 3", creators: 12, revenue: 21600 }
       ]
     }
   },
   {
     id: "5",
-    brand: "Samsung",
-    title: "Mobile Photography",
-    payout: 1800,
+    brand: "Apple Music",
+    title: "Artist Takeover",
+    payout: 2200,
     deadline: "6 days left",
-    participants: 6,
-    description: "Showcase the photography capabilities of the new Samsung phone. Focus on creative techniques and unique perspectives.",
+    participants: 5,
+    description: "Host Apple Music's artist takeover series. Create exclusive content, share personal playlists, and engage with fans through live sessions.",
     requirements: [
-      "Photography focus",
-      "Creative portfolio",
-      "8k+ followers",
-      "Previous tech content"
+      "Music industry background",
+      "Live streaming experience",
+      "15k+ followers",
+      "Previous takeovers"
     ],
-    platform: "Instagram",
+    platform: "Instagram & Apple Music",
     duration: "2 weeks",
     stats: {
-      totalRevenue: 22000,
-      totalCreators: 6,
+      totalRevenue: 11000,
+      totalCreators: 5,
       growthData: [
-        { date: "Week 1", creators: 2, revenue: 5000 },
-        { date: "Week 2", creators: 5, revenue: 14000 },
-        { date: "Week 3", creators: 6, revenue: 22000 }
+        { date: "Week 1", creators: 2, revenue: 4400 },
+        { date: "Week 2", creators: 4, revenue: 8800 },
+        { date: "Week 3", creators: 5, revenue: 11000 }
       ]
     }
   }
 ]
 
+/**
+ * CampaignOpportunities component displays a list of available campaign opportunities
+ * for creators to participate in. It includes campaign details, requirements,
+ * and performance metrics.
+ * 
+ * @component
+ * @returns {JSX.Element} Rendered campaign opportunities list
+ */
 export function CampaignOpportunities() {
   const [selectedCampaign, setSelectedCampaign] = useState<Campaign | null>(null)
 

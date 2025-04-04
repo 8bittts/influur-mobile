@@ -8,11 +8,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import Link from "next/link"
 
 // Generate 50 mock opportunities
-const PLATFORMS = ["Instagram", "TikTok", "YouTube", "Twitter", "Facebook"]
-const CATEGORIES = ["Fashion", "Tech", "Food", "Fitness", "Beauty", "Travel", "Gaming", "Lifestyle"]
+const PLATFORMS = ["Instagram", "TikTok", "YouTube", "Twitter", "Facebook", "Spotify", "SoundCloud"]
+const CATEGORIES = ["Music", "Artist", "Producer", "DJ", "Band", "Label", "Festival", "Live"]
 const BRANDS = [
-  "Nike", "Apple", "Samsung", "Adidas", "Starbucks", "Microsoft", "Sony", "Google",
-  "Amazon", "Coca-Cola", "Pepsi", "Under Armour", "Reebok", "Puma", "H&M", "Zara"
+  "Sony Music", "Warner Music", "Universal Music", "Spotify", "Apple Music", "SoundCloud",
+  "Atlantic Records", "Interscope", "Def Jam", "Columbia Records", "RCA Records", "EMI",
+  "BMG", "Virgin Records", "Epic Records", "Republic Records"
 ]
 
 function generateMockCampaigns(count: number) {

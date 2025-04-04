@@ -8,8 +8,14 @@ import { Clock, Users, CheckCircle2, XCircle, AlertCircle, TrendingUp, DollarSig
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import Link from "next/link"
 
+/**
+ * Campaign status type representing the current state of a campaign
+ */
 type CampaignStatus = "pending_approval" | "completed" | "dropped" | "incomplete"
 
+/**
+ * Campaign interface representing a creator's campaign
+ */
 interface Campaign {
   id: string
   brand: string
@@ -30,7 +36,10 @@ interface Campaign {
   }
 }
 
-// Mock data for campaigns
+/**
+ * Mock campaign data for demonstration purposes
+ * @type {{ pending: Campaign[], history: Campaign[] }}
+ */
 const MOCK_CAMPAIGNS: {
   pending: Campaign[]
   history: Campaign[]
@@ -38,422 +47,176 @@ const MOCK_CAMPAIGNS: {
   pending: [
     {
       id: "p1",
-      brand: "Nike",
-      title: "Summer Collection Launch",
-      payout: 1500,
+      brand: "Sony Music",
+      title: "New Artist Spotlight Series",
+      payout: 2500,
       status: "pending_approval",
       submittedAt: "2024-03-10",
-      platform: "Instagram",
-      requirements: ["Post 3 Stories", "1 Feed Post", "Link in Bio"]
+      platform: "Instagram & TikTok",
+      requirements: ["3 Behind-the-scenes Posts", "1 Live Performance", "Artist Interview"]
     },
     {
       id: "p2",
-      brand: "Apple",
-      title: "Tech Review Series",
-      payout: 2000,
+      brand: "Warner Music",
+      title: "Album Release Campaign",
+      payout: 3000,
       status: "pending_approval",
       submittedAt: "2024-03-12",
-      platform: "YouTube",
-      requirements: ["10-minute Review", "Product Showcase", "Link in Description"]
+      platform: "YouTube & Instagram",
+      requirements: ["Album Review", "Track Preview", "Artist Q&A"]
     }
   ],
   history: [
     {
       id: "h1",
-      brand: "Adidas",
-      title: "Fitness Challenge",
-      payout: 1200,
+      brand: "Universal Music",
+      title: "Festival Coverage",
+      payout: 2000,
       status: "completed",
       completedAt: "2024-02-28",
       platform: "Instagram & TikTok",
       engagement: {
-        likes: 15000,
-        comments: 800,
-        shares: 300
+        likes: 25000,
+        comments: 1200,
+        shares: 800
       }
     },
     {
       id: "h2",
-      brand: "Samsung",
-      title: "Mobile Photography",
+      brand: "Spotify",
+      title: "Playlist Curation",
       payout: 1800,
       status: "dropped",
       droppedAt: "2024-02-15",
       reason: "Schedule conflict",
-      platform: "Instagram"
+      platform: "Spotify & Instagram"
     },
     {
       id: "h3",
-      brand: "Starbucks",
-      title: "Morning Routine",
-      payout: 800,
+      brand: "Apple Music",
+      title: "Artist Takeover",
+      payout: 2200,
       status: "incomplete",
       endedAt: "2024-01-30",
       reason: "Did not meet engagement requirements",
-      platform: "TikTok"
+      platform: "Apple Music & Instagram"
     },
     {
       id: "h4",
-      brand: "Under Armour",
-      title: "Training Series",
-      payout: 2500,
+      brand: "Atlantic Records",
+      title: "New Release Promotion",
+      payout: 2800,
       status: "completed",
       completedAt: "2024-01-15",
       platform: "Instagram & YouTube",
       engagement: {
-        likes: 25000,
-        comments: 1200,
-        shares: 500
+        likes: 35000,
+        comments: 1800,
+        shares: 1200
       }
     },
     {
       id: "h5",
-      brand: "Spotify",
-      title: "Playlist Curation",
-      payout: 1000,
+      brand: "Interscope",
+      title: "Artist Discovery",
+      payout: 2000,
       status: "completed",
       completedAt: "2024-02-20",
-      platform: "Instagram",
-      engagement: {
-        likes: 12000,
-        comments: 600,
-        shares: 200
-      }
-    },
-    {
-      id: "h6",
-      brand: "Lululemon",
-      title: "Yoga Series",
-      payout: 1500,
-      status: "completed",
-      completedAt: "2024-02-10",
-      platform: "Instagram & YouTube",
-      engagement: {
-        likes: 18000,
-        comments: 900,
-        shares: 400
-      }
-    },
-    {
-      id: "h7",
-      brand: "Canon",
-      title: "Photography Tips",
-      payout: 2000,
-      status: "dropped",
-      droppedAt: "2024-02-05",
-      reason: "Creative differences",
-      platform: "Instagram"
-    },
-    {
-      id: "h8",
-      brand: "HelloFresh",
-      title: "Cooking Series",
-      payout: 1700,
-      status: "completed",
-      completedAt: "2024-01-25",
-      platform: "TikTok & Instagram",
-      engagement: {
-        likes: 22000,
-        comments: 1100,
-        shares: 800
-      }
-    },
-    {
-      id: "h9",
-      brand: "Fitbit",
-      title: "Fitness Journey",
-      payout: 1300,
-      status: "incomplete",
-      endedAt: "2024-01-20",
-      reason: "Technical issues",
-      platform: "Instagram"
-    },
-    {
-      id: "h10",
-      brand: "Sephora",
-      title: "Beauty Tutorial",
-      payout: 1600,
-      status: "completed",
-      completedAt: "2024-01-10",
-      platform: "Instagram & YouTube",
-      engagement: {
-        likes: 19000,
-        comments: 950,
-        shares: 600
-      }
-    },
-    {
-      id: "h11",
-      brand: "Nintendo",
-      title: "Gaming Stream",
-      payout: 2200,
-      status: "completed",
-      completedAt: "2024-01-05",
-      platform: "Twitch & YouTube",
-      engagement: {
-        likes: 28000,
-        comments: 1500,
-        shares: 900
-      }
-    },
-    {
-      id: "h12",
-      brand: "Peloton",
-      title: "Home Workout",
-      payout: 1900,
-      status: "completed",
-      completedAt: "2023-12-28",
-      platform: "Instagram",
-      engagement: {
-        likes: 21000,
-        comments: 1000,
-        shares: 700
-      }
-    },
-    {
-      id: "h13",
-      brand: "GoPro",
-      title: "Adventure Series",
-      payout: 2800,
-      status: "dropped",
-      droppedAt: "2023-12-20",
-      reason: "Weather conditions",
-      platform: "YouTube"
-    },
-    {
-      id: "h14",
-      brand: "Whole Foods",
-      title: "Healthy Eating",
-      payout: 1400,
-      status: "completed",
-      completedAt: "2023-12-15",
       platform: "Instagram & TikTok",
       engagement: {
-        likes: 16000,
-        comments: 750,
-        shares: 400
-      }
-    },
-    {
-      id: "h15",
-      brand: "Adobe",
-      title: "Creative Workshop",
-      payout: 2100,
-      status: "completed",
-      completedAt: "2023-12-10",
-      platform: "YouTube",
-      engagement: {
-        likes: 24000,
-        comments: 1300,
-        shares: 800
-      }
-    },
-    {
-      id: "h16",
-      brand: "DJI",
-      title: "Drone Photography",
-      payout: 2400,
-      status: "incomplete",
-      endedAt: "2023-12-05",
-      reason: "Equipment malfunction",
-      platform: "Instagram"
-    },
-    {
-      id: "h17",
-      brand: "Audible",
-      title: "Book Review",
-      payout: 1100,
-      status: "completed",
-      completedAt: "2023-11-28",
-      platform: "Instagram",
-      engagement: {
-        likes: 14000,
-        comments: 650,
-        shares: 300
-      }
-    },
-    {
-      id: "h18",
-      brand: "Reebok",
-      title: "CrossFit Series",
-      payout: 1700,
-      status: "completed",
-      completedAt: "2023-11-20",
-      platform: "Instagram & YouTube",
-      engagement: {
-        likes: 20000,
-        comments: 950,
-        shares: 600
-      }
-    },
-    {
-      id: "h19",
-      brand: "Philips Hue",
-      title: "Home Lighting",
-      payout: 1300,
-      status: "dropped",
-      droppedAt: "2023-11-15",
-      reason: "Budget constraints",
-      platform: "Instagram"
-    },
-    {
-      id: "h20",
-      brand: "Blue Apron",
-      title: "Recipe Challenge",
-      payout: 1600,
-      status: "completed",
-      completedAt: "2023-11-10",
-      platform: "TikTok",
-      engagement: {
-        likes: 17000,
-        comments: 800,
-        shares: 500
-      }
-    },
-    {
-      id: "h21",
-      brand: "Bose",
-      title: "Music Series",
-      payout: 2000,
-      status: "completed",
-      completedAt: "2023-11-05",
-      platform: "Instagram & YouTube",
-      engagement: {
-        likes: 23000,
-        comments: 1100,
-        shares: 700
-      }
-    },
-    {
-      id: "h22",
-      brand: "Patagonia",
-      title: "Outdoor Adventure",
-      payout: 2600,
-      status: "completed",
-      completedAt: "2023-10-28",
-      platform: "Instagram",
-      engagement: {
-        likes: 26000,
+        likes: 28000,
         comments: 1400,
         shares: 900
       }
     },
     {
-      id: "h23",
-      brand: "Microsoft",
-      title: "Tech Tips",
-      payout: 2300,
-      status: "incomplete",
-      endedAt: "2023-10-20",
-      reason: "Missed deadlines",
-      platform: "YouTube"
-    },
-    {
-      id: "h24",
-      brand: "Dyson",
-      title: "Home Tech",
-      payout: 1800,
+      id: "h6",
+      brand: "Def Jam",
+      title: "Hip-Hop Series",
+      payout: 2500,
       status: "completed",
-      completedAt: "2023-10-15",
-      platform: "Instagram",
-      engagement: {
-        likes: 19000,
-        comments: 900,
-        shares: 500
-      }
-    },
-    {
-      id: "h25",
-      brand: "Glossier",
-      title: "Skincare Routine",
-      payout: 1400,
-      status: "completed",
-      completedAt: "2023-10-10",
-      platform: "Instagram & TikTok",
-      engagement: {
-        likes: 21000,
-        comments: 1000,
-        shares: 600
-      }
-    },
-    {
-      id: "h26",
-      brand: "REI",
-      title: "Camping Guide",
-      payout: 2100,
-      status: "dropped",
-      droppedAt: "2023-10-05",
-      reason: "Location issues",
-      platform: "YouTube"
-    },
-    {
-      id: "h27",
-      brand: "Vitamix",
-      title: "Smoothie Series",
-      payout: 1200,
-      status: "completed",
-      completedAt: "2023-09-28",
-      platform: "Instagram",
-      engagement: {
-        likes: 15000,
-        comments: 700,
-        shares: 400
-      }
-    },
-    {
-      id: "h28",
-      brand: "Zwift",
-      title: "Indoor Cycling",
-      payout: 1700,
-      status: "completed",
-      completedAt: "2023-09-20",
-      platform: "YouTube",
-      engagement: {
-        likes: 18000,
-        comments: 850,
-        shares: 500
-      }
-    },
-    {
-      id: "h29",
-      brand: "Headspace",
-      title: "Meditation Guide",
-      payout: 1500,
-      status: "incomplete",
-      endedAt: "2023-09-15",
-      reason: "Content quality issues",
-      platform: "Instagram"
-    },
-    {
-      id: "h30",
-      brand: "Theragun",
-      title: "Recovery Tips",
-      payout: 1900,
-      status: "completed",
-      completedAt: "2023-09-10",
+      completedAt: "2024-02-10",
       platform: "Instagram & YouTube",
       engagement: {
-        likes: 22000,
-        comments: 1050,
-        shares: 700
+        likes: 32000,
+        comments: 1600,
+        shares: 1100
+      }
+    },
+    {
+      id: "h7",
+      brand: "Columbia Records",
+      title: "Live Session",
+      payout: 3000,
+      status: "dropped",
+      droppedAt: "2024-02-05",
+      reason: "Creative differences",
+      platform: "YouTube"
+    },
+    {
+      id: "h8",
+      brand: "RCA Records",
+      title: "Artist Interview",
+      payout: 2200,
+      status: "completed",
+      completedAt: "2024-01-25",
+      platform: "Instagram & YouTube",
+      engagement: {
+        likes: 26000,
+        comments: 1300,
+        shares: 900
+      }
+    },
+    {
+      id: "h9",
+      brand: "EMI",
+      title: "Classical Series",
+      payout: 1800,
+      status: "incomplete",
+      endedAt: "2024-01-20",
+      reason: "Technical issues",
+      platform: "YouTube"
+    },
+    {
+      id: "h10",
+      brand: "BMG",
+      title: "Music Review",
+      payout: 2000,
+      status: "completed",
+      completedAt: "2024-01-10",
+      platform: "Instagram & YouTube",
+      engagement: {
+        likes: 29000,
+        comments: 1500,
+        shares: 1000
       }
     }
   ]
 }
 
-// Mock earnings data
+/**
+ * Mock earnings data for demonstration purposes
+ * @type {Array<{month: string, earnings: number}>}
+ */
 const EARNINGS_DATA = [
-  { month: "Sep", earnings: 800 },
-  { month: "Oct", earnings: 1500 },
-  { month: "Nov", earnings: 2200 },
-  { month: "Dec", earnings: 1800 },
-  { month: "Jan", earnings: 3300 },
-  { month: "Feb", earnings: 4200 },
-  { month: "Mar", earnings: 3800 }
+  { month: "Sep", earnings: 2800 },
+  { month: "Oct", earnings: 3500 },
+  { month: "Nov", earnings: 4200 },
+  { month: "Dec", earnings: 3800 },
+  { month: "Jan", earnings: 5300 },
+  { month: "Feb", earnings: 6200 },
+  { month: "Mar", earnings: 5800 }
 ]
 
+/**
+ * Total earnings calculated from earnings data
+ * @type {number}
+ */
 const TOTAL_EARNINGS = EARNINGS_DATA.reduce((sum, month) => sum + month.earnings, 0)
 
+/**
+ * Status style interface for campaign status visualization
+ */
 interface StatusStyle {
   color: string
   bg: string
@@ -461,6 +224,10 @@ interface StatusStyle {
   label: string
 }
 
+/**
+ * Status styles mapping for different campaign statuses
+ * @type {Record<CampaignStatus, StatusStyle>}
+ */
 const STATUS_STYLES: Record<CampaignStatus, StatusStyle> = {
   pending_approval: {
     color: "text-blue-600",
@@ -488,17 +255,27 @@ const STATUS_STYLES: Record<CampaignStatus, StatusStyle> = {
   }
 }
 
-// Update the growth data to include earnings
+/**
+ * Campaign growth data for visualization
+ * @type {Array<{day: string, engagement: number, earnings: number}>}
+ */
 const CAMPAIGN_GROWTH_DATA = [
-  { day: "Day 1", engagement: 1310, earnings: 150 },
-  { day: "Day 2", engagement: 2735, earnings: 320 },
-  { day: "Day 3", engagement: 5170, earnings: 580 },
-  { day: "Day 4", engagement: 9100, earnings: 890 },
-  { day: "Day 5", engagement: 12970, earnings: 1200 },
-  { day: "Day 6", engagement: 14620, earnings: 1350 },
-  { day: "Day 7", engagement: 16100, earnings: 1500 },
+  { day: "Day 1", engagement: 2310, earnings: 350 },
+  { day: "Day 2", engagement: 4735, earnings: 720 },
+  { day: "Day 3", engagement: 8170, earnings: 1280 },
+  { day: "Day 4", engagement: 12100, earnings: 1890 },
+  { day: "Day 5", engagement: 15970, earnings: 2200 },
+  { day: "Day 6", engagement: 18620, earnings: 2350 },
+  { day: "Day 7", engagement: 20100, earnings: 2500 },
 ]
 
+/**
+ * MyCampaignsPage component displays a creator's active and historical campaigns,
+ * including campaign details, status, engagement metrics, and earnings data.
+ * 
+ * @component
+ * @returns {JSX.Element} Rendered my campaigns page
+ */
 export default function MyCampaignsPage() {
   const [selectedCampaign, setSelectedCampaign] = useState<Campaign | null>(null)
   const [currentPage, setCurrentPage] = useState(1)

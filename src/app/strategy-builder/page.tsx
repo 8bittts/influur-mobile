@@ -11,6 +11,9 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import { useRouter } from "next/navigation"
 
+/**
+ * Message interface representing a chat message in the strategy builder
+ */
 interface Message {
   id: string
   content: string
@@ -24,6 +27,9 @@ interface Message {
   }[]
 }
 
+/**
+ * ChatHistory interface representing a saved chat session
+ */
 interface ChatHistory {
   id: string
   title: string
@@ -31,7 +37,9 @@ interface ChatHistory {
   messages: Message[]
 }
 
-// Add new interface for campaign details
+/**
+ * Campaign interface representing a strategy builder campaign
+ */
 interface Campaign {
   id: string
   title: string
@@ -54,12 +62,15 @@ interface Campaign {
   }
 }
 
-// Add campaign data
+/**
+ * Sample campaign data for the strategy builder
+ * @type {Campaign[]}
+ */
 const campaigns: Campaign[] = [
   {
     id: "cosmic-climber",
-    title: "Cosmic Climber Challenge",
-    description: "30-day zodiac-aligned climbing program with daily horoscope guidance",
+    title: "Artist Discovery Series",
+    description: "30-day music discovery program featuring emerging artists and genre exploration",
     icon: TrendingUp,
     iconColor: "text-indigo-600",
     gradientFrom: "from-indigo-50",
@@ -73,20 +84,20 @@ const campaigns: Campaign[] = [
       duration: "30 days",
       startDate: "May 1, 2024",
       requirements: [
-        "Active climbing certification",
+        "Music industry experience",
         "Minimum 5k followers",
-        "Experience creating fitness content",
-        "Interest in astrology"
+        "Experience creating music content",
+        "Genre expertise"
       ],
       deliverables: [
-        "12 Instagram posts",
-        "4 YouTube videos",
+        "12 Artist spotlights",
+        "4 Live sessions",
         "Daily Stories",
-        "Weekly live sessions"
+        "Weekly playlists"
       ],
       benefits: [
-        "Professional astrologist consultation",
-        "Premium climbing gear package",
+        "Professional studio access",
+        "Premium music gear package",
         "Featured creator spotlight",
         "Performance-based bonuses"
       ]
@@ -94,8 +105,8 @@ const campaigns: Campaign[] = [
   },
   {
     id: "full-moon-boulder",
-    title: "Full Moon Boulder Series",
-    description: "Monthly moonlight climbing events with astrological readings",
+    title: "Festival Coverage Series",
+    description: "Monthly music festival coverage with artist interviews and live performances",
     icon: Users,
     iconColor: "text-purple-600",
     gradientFrom: "from-purple-50",
@@ -109,20 +120,20 @@ const campaigns: Campaign[] = [
       duration: "3 months",
       startDate: "June 15, 2024",
       requirements: [
-        "Boulder grade V4 or higher",
-        "Community management experience",
-        "Available for evening events",
-        "Astrology knowledge"
+        "Festival experience",
+        "Live music coverage",
+        "Available for weekend events",
+        "Music industry knowledge"
       ],
       deliverables: [
-        "Monthly event hosting",
-        "Event documentation",
-        "Community engagement",
-        "Social media coverage"
+        "Monthly festival coverage",
+        "Artist interviews",
+        "Live performance footage",
+        "Social media content"
       ],
       benefits: [
-        "Event planning support",
-        "Custom climbing gear",
+        "Festival passes",
+        "Artist meet & greets",
         "Networking opportunities",
         "Revenue sharing"
       ]
@@ -130,8 +141,8 @@ const campaigns: Campaign[] = [
   },
   {
     id: "zodiac-gear",
-    title: "Zodiac Gear Review Series",
-    description: "Element-based climbing equipment reviews and recommendations",
+    title: "Music Review Series",
+    description: "Genre-based music equipment reviews and recommendations",
     icon: DollarSign,
     iconColor: "text-blue-600",
     gradientFrom: "from-blue-50",
@@ -145,14 +156,14 @@ const campaigns: Campaign[] = [
       duration: "2 months",
       startDate: "May 15, 2024",
       requirements: [
-        "Technical climbing expertise",
+        "Music production expertise",
         "Review writing experience",
-        "Photography skills",
-        "Equipment knowledge"
+        "Audio engineering knowledge",
+        "Equipment expertise"
       ],
       deliverables: [
         "8 detailed reviews",
-        "Product photography",
+        "Sound samples",
         "Comparison videos",
         "Performance tests"
       ],
@@ -166,7 +177,11 @@ const campaigns: Campaign[] = [
   }
 ]
 
-// Sample chart data generator
+/**
+ * Generates sample chart data for different chart types
+ * @param {string} type - The type of chart data to generate
+ * @returns {Array} Sample data array for the specified chart type
+ */
 function generateSampleChartData(type: string) {
   switch (type) {
     case "engagement":
@@ -186,6 +201,14 @@ function generateSampleChartData(type: string) {
   }
 }
 
+/**
+ * StrategyBuilderPage component provides an AI-powered interface for creators
+ * to build and optimize their campaign strategies. It includes chat-based
+ * interaction, data visualization, and campaign recommendations.
+ * 
+ * @component
+ * @returns {JSX.Element} Rendered strategy builder page
+ */
 export default function StrategyBuilderPage() {
   const [input, setInput] = useState("")
   const [messages, setMessages] = useState<Message[]>([])
