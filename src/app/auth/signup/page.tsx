@@ -140,17 +140,13 @@ export default function SignupPage() {
       <main className="flex-1 flex flex-col px-4 sm:px-6 pt-8 sm:pt-12 pb-6">
         {/* Logo Section */}
         <div className="text-center mb-8 sm:mb-12">
-          <Image
-            src="/influur-logo.svg"
-            alt="Influur"
-            width={120}
-            height={40}
-            className="mx-auto mb-6"
-          />
-          <h1 className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-2">
-            Start earning money by connecting with top brands
+          <h1 className="text-2xl sm:text-3xl font-semibold text-[#FF5F1F] mb-2">
+            Influur
           </h1>
           <p className="text-base sm:text-lg text-gray-600">
+            Start earning money by connecting with top brands
+          </p>
+          <p className="text-sm sm:text-base text-gray-500 mt-1">
             Join thousands of creators already using Influur
           </p>
         </div>
